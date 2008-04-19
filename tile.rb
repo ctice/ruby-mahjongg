@@ -6,4 +6,8 @@ class Tile
 	def initialize(name, number)
 		@name, @number = name, number
 	end
+	
+	def ==(tile)
+		return (self.name == tile.name) && (self.number == tile.number)
+	end
 end
