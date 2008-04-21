@@ -31,4 +31,10 @@ describe Game do
 		@game.discard_tile(tile)
 		@game.center_tile.should == tile
 	end
+	
+	it "should remove free tile and give it to the turn player" do
+		num_free_tiles = @game.free_tiles.size
+		@game.draw_tile
+		@game.free_tiles.size.should == (num_free_tiles - 1)
+	end
 end

@@ -35,13 +35,16 @@ class Game
 		shuffle_tiles
 	end
 	
-	def draw_tile(player)
-		
+	# draw a tile from the wall for the turn player
+	def draw_tile
+		draw = @free_tiles[rand(@free_tiles.size)]
+		@turn.add_tile(draw)
+		@free_tiles.delete(draw)
 	end
 	
-	# remove the tile from the player and place it in the center of the table
+	# remove the tile from the turn player and place it in the center of the table
 	def discard_tile(tile)
-		@center_tile = turn.remove_tile(tile)
+		@center_tile = @turn.remove_tile(tile)
 	end
 	
 	# the current turn has been completed, so advance the turn to the next player
