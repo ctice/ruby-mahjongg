@@ -5,11 +5,11 @@ require 'honor_tile'
 require 'suit_tile'
 
 class Game
-	attr_reader :players		# the players in the game
-	attr_reader :free_tiles	# free tiles don't belong to any player
-	attr_reader :dealer			# the current dealer for the round
-	attr_reader :turn				# the player whose turn it is
-	attr_reader :center_tile# the free tile in the center of the table
+	attr_reader :players	  	# the players in the game
+	attr_reader :free_tiles	  # free tiles don't belong to any player
+	attr_reader :dealer			  # the current dealer for the round
+	attr_reader :turn				  # the player whose turn it is
+	attr_reader :center_tile  # the free tile in the center of the table
 	
 	# Create a new game with where n player names are passed as parameters and
 	# 4 - n are CPU players
@@ -18,6 +18,7 @@ class Game
 			!(1..4).include? names.size
 		
 		@players = []
+		# setup human players
 		names.each do |name|
 			@players << Player.new(name)
 		end
@@ -29,7 +30,8 @@ class Game
 		
 		# pick a random player as dealer
 		@dealer = @players[rand(4)]
-		@turn = @dealer
+		# dealer gets the current turn
+    @turn = @dealer
 		
 		populate_free_tiles
 		shuffle_tiles
